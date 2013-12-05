@@ -29,7 +29,7 @@
     "uglify-js": "*",
     "express": "3.x",
     "mongoose": "3.x",
-    "node-sass": "0.7.x",
+    "node-sass": "0.7.x"
   },
   "engines": {
     "node": ">=0.8"
