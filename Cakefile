@@ -17,7 +17,7 @@ ESPRESSO_INDEX = "index.coffee"
 ###
   Types of source files. DO NOT MODIFY!
 ###
-SOURCES = { COFFEE: "coffee", LESS: "less" }
+SOURCES = { COFFEE: "coffee" }
 
 ###
   Directory where the source code is

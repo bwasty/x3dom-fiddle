@@ -1,29 +1,35 @@
 {
-  "name": "angular-espresso",
-  "description": "A project template for an AngularJS app with an Express, Socket.IO backend written in CoffeeScript",
-  "version": "0.2.2",
+  "name": "MEAN-CD",
+  "description": "A project template for an AngularJS app with an Express, Socket.IO backend written in CoffeeScript with sass and bower support",
+  "version": "0.3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wmora/angular-espresso.git"
+    "url": "https://github.com/jacekd/MEAN-CS.git"
   },
-  "author": "William Mora <william.r.mora@gmail.com>",
+  "author": "Jacek Dominiak <jacek@effortable.com>",
   "contributors": [
     {
       "name": "William Mora",
-      "email": "william.r.mora@gmail.com"
+      "email": "william.r.mora@gmail.com",
+      "name": "Jacek Dominiak",
+      "email": "jacek@effortable.com"
     }
   ],
   "keywords": [
     "node",
     "express",
     "coffeescript",
-    "socket.io"
+    "socket.io",
+    "sass",
+    "bower"
   ],
   "dependencies": {
-    "express": "3.1.1",
-    "jade": "0.28.2",
-    "socket.io": "0.9.14",
-    "uglify-js": "2.2.5"
+    "jade": "*",
+    "socket.io": "*",
+    "uglify-js": "*",
+    "express": "3.x",
+    "mongoose": "3.x",
+    "node-sass": "0.7.x",
   },
   "engines": {
     "node": ">=0.8"
