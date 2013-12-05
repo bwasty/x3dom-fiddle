@@ -7,6 +7,7 @@ mkdir public/styles
 echo "Removing unnecessary stuff..."
 rm .gitignore
 rm README.md
+rm -Rf .git
 
 echo "Building project..."
 cake build
