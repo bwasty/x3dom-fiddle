@@ -70,11 +70,6 @@ CLIENT_RESOURCES_OUT = "#{PUBLIC_DIR}/js"
 STYLES_SRC = "#{__dirname}/styles"
 
 ###
-  Styles output filename
-###
-STYLES_NAME = "espresso.css"
-
-###
   Styles output folder
 ###
 STYLES_OUT = "#{PUBLIC_DIR}/styles"
@@ -124,8 +119,6 @@ buildClient = ->
         when SOURCES.COFFEE
           compile dir.type, "-c -b -o #{dir.output} #{dir.input}", ->
             uglifyDirectory dir.output
-        when SOURCES.LESS
-          compile dir.type, "-x #{dir.input}/*.less > #{dir.output}/#{STYLES_NAME}"
 
 ###
   Uglifies a directory
@@ -223,19 +216,13 @@ deleteFile = (file) ->
 
 ###
   Executes a compilation command
-  @type - Type of source (SOURCES.COFFEE or SOURCES.LESS)
+  @type - Type of source (SOURCES.COFFEE)
   @options - Command options
 ###
 compile = (type, options, callback) ->
   switch type
     when SOURCES.COFFEE
       exec "coffee #{options}", {}, (error, stdout, stderr) ->
-        if error
-          console.log stderr.toString()
-          throw error
-        if callback then callback()
-    when SOURCES.LESS
-      exec "lessc #{options}", {}, (error, stdout, stderr) ->
         if error
           console.log stderr.toString()
           throw error

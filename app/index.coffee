@@ -6,6 +6,7 @@ config = require "./config"
 express = require "express"
 path = require "path"
 routes = require "./routes"
+sass = require "node-sass"
 
 app = express()
 
@@ -25,6 +26,7 @@ app.use express.methodOverride()
 app.use app.router
 app.use express.favicon("#{process.cwd()}/#{config.PUBLIC_PATH}/#{config.IMAGES_PATH}/favicon.ico")
 app.use express["static"] path.join process.cwd(), config.PUBLIC_PATH
+app.use sass.middleware src: config.STYLE_SRC, dest: config.STYLE_OUT, debug: true
 
 ###
   Routes config
