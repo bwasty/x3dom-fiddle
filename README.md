@@ -2,6 +2,8 @@
 
 Start an app with AngularJS on the client, Express + Node + Socket.IO as your back-end, all written in CoffeeScript.
 
+Supports SASS for styling and Bower for front end package manager.
+
 ## Current version
 
 Current version: 0.3.0
@@ -18,7 +20,7 @@ This version includes the following components:
 ## Installation
 
 You need to have installed node (http://nodejs.org/), CoffeeScript (http://coffeescript.org/), make sure
-you install CoffeeScript globally. You also need LESS (http://lesscss.org/).
+you install CoffeeScript globally. You also need BOWER (http://bower.io/).
 
 Once you have them installed, extract the downloaded file, go to the directory it was extracted to and execute
 setup.sh or setup.bat (depending on your OS):
@@ -58,18 +60,8 @@ component of your site and then use partials for all its sub-components
 
 At the root folder, there are two more folders to consider:
 
-* Styles: Your LESS styles should go in this directory. Keep in mind that the project has Twitter Bootstrap already
-included
+* Styles: Include all into ./styles directory and it will be compiled upon node server start. 
 * Views: Your views/partial views should go here
-
-In the future, I will be adding support for testing. I won't implement file watching until it is stable in node.
-
-## Contribute
-If you want to help, fork/clone/share the project, suggest new features, and/or submit pull requests.
-Contact me directly at william.r.mora@gmail.com or @wilmor24.
-
-## Author
-William Mora - @wilmor24 - http://www.williammora.com
 
 ## References
 
@@ -83,4 +75,6 @@ For more on Jade: http://jade-lang.com
 
 For more on Socket.IO: http://socket.io/
 
-For more on LESS: http://lesscss.org/
+For more on Bower: http://bower.io/
+
+For more on SASS: http://sass-lang.com/
