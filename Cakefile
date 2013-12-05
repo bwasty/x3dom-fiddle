@@ -106,11 +106,6 @@ buildClient = ->
       output: "#{CLIENT_RESOURCES_OUT}",
       input: "#{CLIENT_RESOURCES_SRC}"
     },
-    {
-      type: SOURCES.LESS,
-      output: "#{STYLES_OUT}",
-      input: "#{STYLES_SRC}"
-    }
   ]
 
   for dir in clientDirs

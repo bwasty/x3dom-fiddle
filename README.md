@@ -4,17 +4,16 @@ Start an app with AngularJS on the client, Express + Node + Socket.IO as your ba
 
 ## Current version
 
-Current version: 0.2.2
+Current version: 0.3.0
 
 This version includes the following components:
 
-* AngularJS 1.0.5
-* Twitter Bootstrap 2.3.1
-* Express 3.1.0
-* LESS 1.3.3
-* Socket.IO 0.9.14, client 0.9.11
-* Jade 0.28.2
-* UglifyJS 2.2.5
+* AngularJS 
+* Express 
+* Socket.IO 
+* Jade 
+* UglifyJS 
+* Node-Sass
 
 ## Installation
 
