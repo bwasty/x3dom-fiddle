@@ -15,7 +15,8 @@ app = express()
 ###
 
 app.configure "development", "testing", "production", ->
-  config.setEnv app.settings.env
+  return config.setEnv app.settings.env
+  app.use sass.middleware src: config.STYLES_SRC, dest: config.STYLES_OUT, debug: true
 
 app.set "ipaddr", config.HOSTNAME
 app.set "port", config.PORT
@@ -26,7 +27,6 @@ app.use express.methodOverride()
 app.use app.router
 app.use express.favicon("#{process.cwd()}/#{config.PUBLIC_PATH}/#{config.IMAGES_PATH}/favicon.ico")
 app.use express["static"] path.join process.cwd(), config.PUBLIC_PATH
-app.use sass.middleware src: config.STYLE_SRC, dest: config.STYLE_OUT, debug: true
 
 ###
   Routes config
