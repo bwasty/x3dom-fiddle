@@ -16,6 +16,7 @@ This version includes the following components:
 * Jade 
 * UglifyJS 
 * Node-Sass
+* Mongoose
 
 ## Installation
 
