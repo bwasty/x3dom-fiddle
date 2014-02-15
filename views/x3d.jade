@@ -1,0 +1,21 @@
+html
+head
+    title Inline: Scene which references an external box model
+    link(rel='stylesheet', type='text/css', href='/lib/x3dom-1.5.1/x3dom.css')
+    body
+        p.case
+            //
+               Use the same "x", "y", "width" and "height" attributes as SVG.
+                           Optionally support the "viewBox" and "preserveAspectRatio" just like SVG
+            x3d#inline(xmlns='http://www.web3d.org/specifications/x3d-namespace', showstat='true', x='0px', y='0px', width='400px', height='400px')
+                scene(def='scene')
+                    viewpoint(position='0 0 10', orientation='0 0 0 1')
+                    background(skycolor='1 1 1')
+                    transform(translation='-2 0 0')
+                        shape#greenBox
+                            appearance
+                                material(diffusecolor='0 1 0')
+                            box
+                    transform(translation='2 0 0')
+                        inline(def='redBox', url='/x3d/redBox.x3d')
+        script(type='text/javascript', src='/lib/x3dom-1.5.1/x3dom.js')

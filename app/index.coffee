@@ -34,6 +34,7 @@ app.use express["static"] path.join process.cwd(), config.PUBLIC_PATH
 
 # Views
 app.get "/", routes.index
+app.get "/x3d", routes.x3d
 app.get "/partials/:name", routes.partials
 
 # Services

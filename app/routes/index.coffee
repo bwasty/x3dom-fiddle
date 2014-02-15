@@ -6,6 +6,10 @@
 exports.index = (request, response) ->
   response.render "index"
 
+
+exports.x3d = (request, response) ->
+  response.render "x3d"
+
 ###
   GET partial templates
 ###
