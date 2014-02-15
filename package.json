@@ -12,13 +12,15 @@
     "uglify-js": "*",
     "express": "3.x",
     "mongoose": "3.x",
-    "node-sass": "0.7.x"
+    "node-sass": "0.7.x",
+    "bower": "~1.2.8"
   },
   "engines": {
     "node": ">=0.8"
   },
   "scripts": {
     "start": "coffee -w app.coffee",
-    "start_js": "node app"
+    "start_js": "node app",
+    "postinstall": "bower install && cake build"
   }
 }
