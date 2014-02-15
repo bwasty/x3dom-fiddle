@@ -5,12 +5,12 @@
 ###
 
 angular.module("myApp", ["ngRoute", "myApp.filters", "myApp.services", "myApp.directives"])
-.config ["$routeProvider",
-    ($routeProvider) ->
-        $routeProvider.when "/home", {templateUrl: "partials/home", controller: UsersCtrl}
-        $routeProvider.when "/user/:userId", {templateUrl: "partials/user", controller: UserDetailCtrl}
-        $routeProvider.when "/socket", {templateUrl: "partials/socket", controller: SocketCtrl}
-        $routeProvider.otherwise {redirectTo: "/home"}
+.config ["$routeProvider", ($routeProvider) ->
+    $routeProvider
+        .when "/home", {templateUrl: "partials/home", controller: UsersCtrl}
+        .when "/user/:userId", {templateUrl: "partials/user", controller: UserDetailCtrl}
+        .when "/socket", {templateUrl: "partials/socket", controller: SocketCtrl}
+        .otherwise {redirectTo: "/home"}
 ]
 
 

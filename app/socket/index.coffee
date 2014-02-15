@@ -1,5 +1,4 @@
 exports.configure = (io) ->
-
     ###
       Socket.IO config
     ###

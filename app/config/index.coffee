@@ -1,5 +1,4 @@
 exports.setEnv = (environment) ->
-
     ###
       Common config
     ###
@@ -16,12 +15,9 @@ exports.setEnv = (environment) ->
     switch environment
         when "development"
             null
-
         when "testing"
             null
-
         when "production"
             null
-
         else
             console.log "Unknown environment #{environment}!"

@@ -5,7 +5,5 @@
 ###
 
 angular.module("myApp.filters", [])
-.filter "title",
-    ->
-        (user) ->
-            "#{user.id} - #{user.name}"
+.filter "title", ->
+    (user) -> "#{user.id} - #{user.name}"

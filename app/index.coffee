@@ -16,6 +16,7 @@ app = express()
 
 app.configure "development", "testing", "production", ->
     return config.setEnv app.settings.env
+    # TODO!: wtf?
     app.use sass.middleware src: config.STYLES_SRC, dest: config.STYLES_OUT, debug: true
 
 app.set "ipaddr", config.HOSTNAME
