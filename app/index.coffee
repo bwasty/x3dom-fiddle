@@ -20,7 +20,7 @@ app.configure "development", "testing", "production", ->
     app.use sass.middleware src: config.STYLES_SRC, dest: config.STYLES_OUT, debug: true
 
 app.set "ipaddr", config.HOSTNAME
-app.set "port", config.PORT
+app.set "port", process.env.PORT or config.PORT
 app.set "views", path.join process.cwd(), config.VIEWS_PATH
 app.set "view engine", config.VIEWS_ENGINE
 app.use express.bodyParser()
