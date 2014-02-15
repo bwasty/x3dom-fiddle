@@ -1,0 +1,40 @@
+{
+  "name": "MEAN-CD",
+  "description": "A project template for an AngularJS app with an Express, Socket.IO backend written in CoffeeScript with sass and bower support",
+  "version": "0.3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jacekd/MEAN-CS.git"
+  },
+  "author": "Jacek Dominiak <jacek@effortable.com>",
+  "contributors": [
+    {
+      "name": "William Mora",
+      "email": "william.r.mora@gmail.com",
+      "name": "Jacek Dominiak",
+      "email": "jacek@effortable.com"
+    }
+  ],
+  "keywords": [
+    "node",
+    "express",
+    "coffeescript",
+    "socket.io",
+    "sass",
+    "bower"
+  ],
+  "dependencies": {
+    "jade": "*",
+    "socket.io": "*",
+    "uglify-js": "*",
+    "express": "3.x",
+    "mongoose": "3.x",
+    "node-sass": "0.7.x"
+  },
+  "engines": {
+    "node": ">=0.8"
+  },
+  "scripts": {
+    "start": "node app"
+  }
+}
