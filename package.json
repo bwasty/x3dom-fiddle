@@ -6,6 +6,7 @@
   },
   "author": "Benjamin Wasty <benny.wasty@gmail.com>",
   "dependencies": {
+    "coffee-script": "*",
     "jade": "*",
     "socket.io": "*",
     "uglify-js": "*",
