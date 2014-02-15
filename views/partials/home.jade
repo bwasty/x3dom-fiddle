@@ -5,9 +5,9 @@ input.btn.btn-inverse(type="button", ng-click="loadUsers()", value="Load!")
 br
 br
 p(ng-show="users && users.length > 1") Filter results:&nbsp;
-  input(ng-model="narrow")
+    input(ng-model="narrow")
 
 ul
-  li(ng-repeat="user in users | filter: narrow")
-    p
-      a(href="#/user/{{user.id}}") {{ user | title }}
+    li(ng-repeat="user in users | filter: narrow")
+        p
+            a(href="#/user/{{user.id}}") {{ user | title }}

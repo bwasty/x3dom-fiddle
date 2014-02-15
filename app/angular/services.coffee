@@ -9,34 +9,32 @@ socketServer = document.domain
 angular.module("myApp.services", [])
 .value("version", "0.2.2")
 .factory("Socket",
-  ["$rootScope",
-    ($rootScope) ->
+    ["$rootScope",
+        ($rootScope) ->
+            socketService = {}
 
-      socketService = {}
+            socket = io.connect(socketServer)
 
-      socket = io.connect(socketServer)
+            socketService.emit = (event, data) ->
+                socket.emit event, data
 
-      socketService.emit = (event, data) ->
-        socket.emit event, data
+            socketService.on = (event, callback) ->
+                socket.on event, (data) ->
+                    $rootScope.$apply ->
+                        callback data
 
-      socketService.on = (event, callback) ->
-        socket.on event, (data) ->
-          $rootScope.$apply ->
-            callback data
-
-      socketService
-  ]
+            socketService
+    ]
 )
 .factory "User",
-  ["$resource",
-    ($resource) ->
+    ["$resource",
+        ($resource) ->
+            url = "/users/:userId"
 
-      url = "/users/:userId"
+            $resource url, {}, {
 
-      $resource url, {}, {
+                list: {method: "GET", params: {userId: ""}},
+                get: {method: "GET", params: {}}
 
-        list: {method: "GET", params: {userId: ""}},
-        get: {method: "GET", params: {}}
-
-      }
-  ]
+            }
+    ]

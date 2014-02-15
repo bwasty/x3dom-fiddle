@@ -15,8 +15,8 @@ app = express()
 ###
 
 app.configure "development", "testing", "production", ->
-  return config.setEnv app.settings.env
-  app.use sass.middleware src: config.STYLES_SRC, dest: config.STYLES_OUT, debug: true
+    return config.setEnv app.settings.env
+    app.use sass.middleware src: config.STYLES_SRC, dest: config.STYLES_OUT, debug: true
 
 app.set "ipaddr", config.HOSTNAME
 app.set "port", config.PORT
@@ -47,7 +47,7 @@ app.get "/users/:id", users.get
 ###
 
 serverStarted = ->
-  console.log "Server listening on http://#{app.get "ipaddr"}:#{app.get "port"}"
+    console.log "Server listening on http://#{app.get "ipaddr"}:#{app.get "port"}"
 
 server = app.listen app.get('port'), app.get('ipaddr'), serverStarted
 
