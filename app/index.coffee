@@ -67,10 +67,11 @@ app.delete  '/scenes/:id', scenes.delete
   Server startup
 ###
 
-serverStarted = ->
-    console.log "Server listening on http://#{app.get "ipaddr"}:#{app.get "port"}"
+#serverStarted = ->
+#    console.log "Server listening on http://#{app.get "ipaddr"}:#{app.get "port"}"
 
-server = app.listen app.get('port'), app.get('ipaddr'), serverStarted
+server = app.listen app.get('port'), ->
+    console.log("Listening on " + app.get('port'));
 
 ###
   Socket.IO registration and configuration
