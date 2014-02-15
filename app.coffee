@@ -1,1 +1,2 @@
-app = require "./.espresso"
+#app = require "./.espresso"
+require "./app/index"

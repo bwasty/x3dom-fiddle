@@ -17,6 +17,7 @@
     "node": ">=0.8"
   },
   "scripts": {
-    "start": "node app"
+    "start": "coffee -w app.coffee",
+    "start_js": "node app"
   }
 }
