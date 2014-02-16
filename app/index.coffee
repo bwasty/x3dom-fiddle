@@ -31,8 +31,9 @@ app.use express.favicon("#{process.cwd()}/#{config.PUBLIC_PATH}/#{config.IMAGES_
 
 app.use express.static path.join(process.cwd(), config.PUBLIC_PATH)
 
-# TODO!: only if debug/dev
-app.use express.static path.join(process.cwd(), 'app')
+if process.env.NODE_ENV != 'production'
+    app.use express.static path.join(process.cwd(), 'app')
+    app.set 'dev', true
 
 # for formage
 app.use(express.cookieParser('magical secret admin'))

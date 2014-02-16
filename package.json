@@ -26,9 +26,12 @@
   },
   "scripts": {
     "start": "nodemon app.coffee",
-    "postinstall": "bower install && cake build"
+    "postinstall": "bower install && grunt"
   },
   "devDependencies": {
-    "nodemon": "~1.0.14"
+    "nodemon": "~1.0.14",
+    "grunt": "~0.4.2",
+    "grunt-contrib-coffee": "~0.10.0",
+    "grunt-contrib-uglify": "~0.3.2"
   }
 }
