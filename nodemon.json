@@ -1,0 +1,7 @@
+{
+    "restartable": "r",
+    "ignore": [
+        "app/angular"
+    ],
+    "ext": "coffee"
+}

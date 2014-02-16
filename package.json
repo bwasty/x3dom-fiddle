@@ -24,8 +24,11 @@
     "node": ">=0.8"
   },
   "scripts": {
-    "start": "coffee -w app.coffee",
+    "start": "nodemon app.coffee",
     "start_js": "node app",
     "postinstall": "bower install && cake build"
+  },
+  "devDependencies": {
+    "nodemon": "~1.0.14"
   }
 }
