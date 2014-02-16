@@ -29,8 +29,10 @@ app.use express.methodOverride()
 app.use app.router
 app.use express.favicon("#{process.cwd()}/#{config.PUBLIC_PATH}/#{config.IMAGES_PATH}/favicon.ico")
 
-# TODO!: get correctly source mapped (path!) coffee sources in here...
 app.use express.static path.join(process.cwd(), config.PUBLIC_PATH)
+
+# TODO!: only if debug/dev
+app.use express.static path.join(process.cwd(), 'app')
 
 # for formage
 app.use(express.cookieParser('magical secret admin'))
