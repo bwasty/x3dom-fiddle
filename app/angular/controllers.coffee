@@ -4,34 +4,27 @@
   Controllers
 ###
 
-AppCtrl = ($scope, Scene) ->
-    $scope.name = "Espresso"
+AppCtrl = ["$scope", "Scene", ($scope, Scene) ->
     $scope.scenes = Scene.$query()
+]
 
-AppCtrl.$inject = ["$scope", "Scene"]
+X3domCtrl = ($scope) ->
+    $scope.foo = 42
 
-UsersCtrl = ($scope, User) ->
-    $scope.loadUsers = ->
-        $scope.users = {}
-        User.list {}
-        , (data) ->
-            $scope.users = data.message
+X3domCtrl.$inject = ["$scope"]
+#
+#UserDetailCtrl = ($scope, $routeParams, User) ->
+#    $scope.user =
+#        User.get {userId: $routeParams.userId}
+#        , (data) ->
+#            $scope.user = data.user
+#
+#UserDetailCtrl.$inject = ["$scope", "$routeParams", "User"]
 
-UsersCtrl.$inject = ["$scope", "User"]
-
-UserDetailCtrl = ($scope, $routeParams, User) ->
-    $scope.user =
-        User.get {userId: $routeParams.userId}
-        , (data) ->
-            $scope.user = data.user
-
-UserDetailCtrl.$inject = ["$scope", "$routeParams", "User"]
-
-SocketCtrl = ($scope, Socket) ->
+SocketCtrl = ["$scope", "Socket", ($scope, Socket) ->
     Socket.on "pong", (data) ->
         $scope.response = data.data
 
     $scope.ping = ->
         Socket.emit("ping", {})
-
-SocketCtrl.$inject = ["$scope", "Socket"]
+]

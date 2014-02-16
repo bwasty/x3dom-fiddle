@@ -6,8 +6,7 @@
 
 socketServer = document.domain
 
-angular.module("myApp.services", [])
-.value("version", "0.2.2")
+angular.module("X3domApp.services", [])
 .factory("Socket", ["$rootScope", ($rootScope) ->
     socketService = {}
 
@@ -23,11 +22,11 @@ angular.module("myApp.services", [])
 
     socketService
 ])
-.factory "User", ["$resource", ($resource) ->
-    url = "/users/:userId"
-
-    $resource url, {}, {
-        list: {method: "GET", params: {userId: ""}},
-        get: {method: "GET", params: {}}
-    }
-]
+#.factory "User", ["$resource", ($resource) ->
+#    url = "/users/:userId"
+#
+#    $resource url, {}, {
+#        list: {method: "GET", params: {userId: ""}},
+#        get: {method: "GET", params: {}}
+#    }
+#]

@@ -6,33 +6,28 @@ block content
         h1 Welcome to Angular Espresso
 
         div(ng-controller='AppCtrl')
-            | Hello, {{name}}
             pre(style='white-space: pre-wrap;', ng-repeat='scene in scenes')
-                //| {{ scene.name }}, {{ scene.desc }}, {{ scene.created_at }}
-                //br
-                span(ng-repeat='(key, value) in scene') {{ key }}: {{ value }} |
+                span(ng-repeat='(key, value) in scene') {{ key }}: {{ value }} |&nbsp;
                 br
 
         span Click on one of the options to test the project
             ul.nav.nav-pills.nav-stacked
-                li
-                    a(href='#/home') User listing, details
-                li
-                    a(href='#/socket') Socket server
+                li: a(href='#/home') X3dom example
+                li: a(href='/x3d') X3dom example separate page
+                li: a(href='#/socket') Socket server
             hr
             div(ng-view)
 
-        div
-            | Angular Espresso, version &nbsp;
-            span(app-version)
-
+    // TODO: minified versions for production
     script(src='/lib/socket.io-client/dist/socket.io.js')
     script(src='/lib/angular/angular.js')
     script(src='/lib/angular-route/angular-route.js')
     script(src='/lib/angular-resource/angular-resource.js')
     script(src='/lib/angular-bootstrap/ui-bootstrap-tpls.js')
     script(src='/angoose/angoose-client.js')
+    script(type='text/javascript', src='/lib/x3dom-1.5.1/x3dom.js')
 
+    // TODO: concatenation
     script(src='/angular/app.js')
     script(src='/angular/services.js')
     script(src='/angular/controllers.js')

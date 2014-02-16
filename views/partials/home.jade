@@ -1,13 +1,30 @@
-h2 User Listing, Details
+//h2 User Listing, Details
+//
+//p Click to load all users
+//input.btn.btn-inverse(type="button", ng-click="loadUsers()", value="Load!")
+//br
+//br
+//p(ng-show="users && users.length > 1") Filter results:&nbsp;
+//    input(ng-model="narrow")
+//
+//ul
+//    li(ng-repeat="user in users | filter: narrow")
+//        p
+//            a(href="#/user/{{user.id}}") {{ user | title }}
 
-p Click to load all users
-input.btn.btn-inverse(type="button", ng-click="loadUsers()", value="Load!")
-br
-br
-p(ng-show="users && users.length > 1") Filter results:&nbsp;
-    input(ng-model="narrow")
-
-ul
-    li(ng-repeat="user in users | filter: narrow")
-        p
-            a(href="#/user/{{user.id}}") {{ user | title }}
+body
+    p.case
+        //
+           Use the same "x", "y", "width" and "height" attributes as SVG.
+                       Optionally support the "viewBox" and "preserveAspectRatio" just like SVG
+        x3d#inline(xmlns='http://www.web3d.org/specifications/x3d-namespace', showstat='true', x='0px', y='0px', width='1024px', height='768px')
+            scene(def='scene')
+                viewpoint(position='0 0 10', orientation='0 0 0 1')
+                background(skycolor='1 1 1')
+                transform(translation='-2 0 0')
+                    shape#greenBox
+                        appearance
+                            material(diffusecolor='0 1 0')
+                        box
+                transform(translation='2 0 0')
+                    inline(def='redBox', url='/x3d/redBox.x3d')
