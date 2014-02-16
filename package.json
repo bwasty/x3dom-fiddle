@@ -15,7 +15,8 @@
     "node-sass": "0.7.x",
     "bower": "~1.2.8",
     "angoose": "~0.2.32",
-    "newrelic": "~1.3.2"
+    "newrelic": "~1.3.2",
+    "sendgrid": "~1.0.0-rc.1.0"
   },
   "engines": {
     "node": ">=0.8"

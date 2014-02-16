@@ -84,6 +84,20 @@ require "angoose"
         'mongo-opts': process.env.MONGOLAB_URI or 'mongodb://localhost/scenes'
     )
 
+# TODO!: integrate in a useful place (working)
+#sendgrid = require('sendgrid')(
+#    process.env.SENDGRID_USERNAME,
+#    process.env.SENDGRID_PASSWORD
+#)
+#sendgrid.send({
+#    to:       'benjamin.wasty@gmail.com',
+#    from:     'benny.wasty@gmail.com',
+#    subject:  'Hello World',
+#    text:     'My first email through SendGrid.'
+#}, (err, json) ->
+#    console.error err if err
+#    console.log json
+#)
 
 ###
   Export server
