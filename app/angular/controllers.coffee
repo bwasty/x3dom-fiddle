@@ -10,6 +10,7 @@ AppCtrl = ["$scope", "Scene", ($scope, Scene) ->
 
 X3domCtrl = ($scope) ->
     $scope.foo = 42
+    x3dom.reload()
 
 X3domCtrl.$inject = ["$scope"]
 #
