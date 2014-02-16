@@ -39,6 +39,16 @@ app.use express["static"] path.join process.cwd(), config.PUBLIC_PATH
 #    console.log "Mongoose - connection error: " + err if err?
 #    console.log "Mongoose - connection OK"
 
+
+# TODO!: test/use
+#mongoose = require 'mongoose'
+#Grid = require 'gridfs-stream'
+#
+#conn = mongoose.createConnection app.get('storage-uri')
+#conn.once 'open', ->
+#    gfs = Grid(conn.db, mongoose.mongo)
+
+
 ###
   Routes config
 ###
