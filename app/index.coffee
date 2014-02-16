@@ -30,16 +30,14 @@ app.use express.favicon("#{process.cwd()}/#{config.PUBLIC_PATH}/#{config.IMAGES_
 app.use express["static"] path.join process.cwd(), config.PUBLIC_PATH
 
 # mongoose
-mongoose = require 'mongoose'
-app.set 'storage-uri',
-    process.env.MONGOLAB_URI or
-    'mongodb://localhost/scenes'
-
-mongoose.connect app.get('storage-uri'), { db: { safe: true }}, (err) ->
-    console.log "Mongoose - connection error: " + err if err?
-    console.log "Mongoose - connection OK"
-
-require './services/scene'
+#mongoose = require 'mongoose'
+#app.set 'storage-uri',
+#    process.env.MONGOLAB_URI or
+#    'mongodb://localhost/scenes'
+#
+#mongoose.connect app.get('storage-uri'), { db: { safe: true }}, (err) ->
+#    console.log "Mongoose - connection error: " + err if err?
+#    console.log "Mongoose - connection OK"
 
 ###
   Routes config
@@ -56,12 +54,12 @@ app.get "/users", users.list
 app.get "/users/:id", users.get
 
 # Scene
-scenes = require './services/scene'
-app.post    '/scenes',     scenes.create
-app.get     '/scenes',     scenes.retrieve
-app.get     '/scenes/:id', scenes.retrieve
-app.put     '/scenes/:id', scenes.update
-app.delete  '/scenes/:id', scenes.delete
+scenes = require '../models/scene'
+#app.post    '/scenes',     scenes.create
+#app.get     '/scenes',     scenes.retrieve
+#app.get     '/scenes/:id', scenes.retrieve
+#app.put     '/scenes/:id', scenes.update
+#app.delete  '/scenes/:id', scenes.delete
 
 ###
   Server startup
@@ -79,6 +77,13 @@ server = app.listen app.get('port'), ->
 
 io = require("socket.io").listen server
 require("./socket").configure io
+
+# Angoose bootstraping
+require "angoose"
+    .init(app,
+        'mongo-opts': process.env.MONGOLAB_URI or 'mongodb://localhost/scenes'
+    )
+
 
 ###
   Export server

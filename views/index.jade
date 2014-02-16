@@ -5,7 +5,14 @@ block content
 
         h1 Welcome to Angular Espresso
 
-        div(ng-controller='AppCtrl') Hello, {{name}}
+        div(ng-controller='AppCtrl')
+            | Hello, {{name}}
+            pre(style='white-space: pre-wrap;', ng-repeat='scene in scenes')
+                //| {{ scene.name }}, {{ scene.desc }}, {{ scene.created_at }}
+                //br
+                span(ng-repeat='(key, value) in scene') {{ key }}: {{ value }} |
+                br
+
         span Click on one of the options to test the project
             ul.nav.nav-pills.nav-stacked
                 li
@@ -24,6 +31,7 @@ block content
     script(src='/lib/angular-route/angular-route.js')
     script(src='/lib/angular-resource/angular-resource.js')
     script(src='/lib/angular-bootstrap/ui-bootstrap-tpls.js')
+    script(src='/angoose/angoose-client.js')
 
     script(src='/angular/app.js')
     script(src='/angular/services.js')

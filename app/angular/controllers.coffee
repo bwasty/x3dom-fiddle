@@ -4,10 +4,11 @@
   Controllers
 ###
 
-AppCtrl = ($scope) ->
+AppCtrl = ($scope, Scene) ->
     $scope.name = "Espresso"
+    $scope.scenes = Scene.$query()
 
-AppCtrl.$inject = ["$scope"]
+AppCtrl.$inject = ["$scope", "Scene"]
 
 UsersCtrl = ($scope, User) ->
     $scope.loadUsers = ->
