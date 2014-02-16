@@ -27,3 +27,4 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-coffee'
 
   grunt.registerTask 'default', ['coffee', 'uglify']
+  grunt.registerTask 'heroku', ['coffee', 'uglify']

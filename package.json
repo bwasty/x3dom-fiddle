@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "nodemon app.coffee",
-    "postinstall": "bower install && grunt"
+    "postinstall": "bower install"
   },
   "devDependencies": {
     "nodemon": "~1.0.14"
