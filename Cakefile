@@ -29,6 +29,7 @@ APP_DIR = "app"
 ###
 APP_SRC = [
   "config",
+  "models"
   "routes",
   "services",
   "socket"
@@ -265,3 +266,11 @@ task "run", "Runs the app", ->
     if err
       console.log "Error starting the app. Run 'cake build' to make sure everything's good"
       throw err
+        
+#
+#{spawn} = require 'child_process'
+#task "compile_watch", "...", ->
+##    spawn 'coffee', ['-bmwc',  '.'], customFds: [0..2]
+#    coffee = spawn 'coffee', ['-bmcw', '.']
+#    coffee.stdout.on 'data', (data) -> console.log data.toString().trim()
+#    coffee.stderr.on 'data', (data) -> console.log data.toString().trim()

@@ -25,7 +25,6 @@
   },
   "scripts": {
     "start": "nodemon app.coffee",
-    "start_js": "node app",
     "postinstall": "bower install && cake build"
   },
   "devDependencies": {

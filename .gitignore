@@ -9,3 +9,4 @@ public/styles
 public/lib/x3dom-1.5.1/docs
 *.js
 *.log
+*.map

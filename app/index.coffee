@@ -28,6 +28,8 @@ app.use express.bodyParser()
 app.use express.methodOverride()
 app.use app.router
 app.use express.favicon("#{process.cwd()}/#{config.PUBLIC_PATH}/#{config.IMAGES_PATH}/favicon.ico")
+
+# TODO!: get correctly source mapped (path!) coffee sources in here...
 app.use express.static path.join(process.cwd(), config.PUBLIC_PATH)
 
 # for formage
@@ -69,7 +71,7 @@ app.get "/users", users.list
 app.get "/users/:id", users.get
 
 # Scene
-scenes = require '../models/scene'
+scenes = require './models/scene'
 #app.post    '/scenes',     scenes.create
 #app.get     '/scenes',     scenes.retrieve
 #app.get     '/scenes/:id', scenes.retrieve
@@ -96,6 +98,7 @@ require("./socket").configure io
 # Angoose bootstraping
 require "angoose"
     .init(app,
+        'module-dirs': 'app/models',
         'mongo-opts': process.env.MONGOLAB_URI or 'mongodb://localhost/scenes'
     )
 
