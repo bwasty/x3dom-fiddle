@@ -13,20 +13,24 @@ Scene = new mongoose.Schema(
     copied_from:
         type: mongoose.Schema.Types.ObjectId
         ref: 'Scene'
+    public:
+        type: Boolean
+        required: true
+        default: false
 )
 
 mongoose.model 'Scene', Scene
 
 # controller/scenes.coffee?
 
-#exports.create = (req, res) ->
-#    Resource = mongoose.model('Scene')
-#    fields = req.body
-#
-#    r = new Resource(fields)
-#    r.save (err, resource) ->
-#        res.send(500, { error: err }) if err?
-#        res.send(resource)
+exports.create = (req, res) ->
+    Resource = mongoose.model('Scene')
+    fields = req.body
+
+    r = new Resource(fields)
+    r.save (err, resource) ->
+        res.send(500, { error: err }) if err?
+        res.send(resource)
 #
 #
 #exports.retrieve = (req, res) ->

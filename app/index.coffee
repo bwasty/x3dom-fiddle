@@ -65,7 +65,7 @@ app.get "/users/:id", users.get
 
 # Scene
 scenes = require '../models/scene'
-#app.post    '/scenes',     scenes.create
+app.post    '/scenes',     scenes.create
 #app.get     '/scenes',     scenes.retrieve
 #app.get     '/scenes/:id', scenes.retrieve
 #app.put     '/scenes/:id', scenes.update
