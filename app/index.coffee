@@ -29,6 +29,11 @@ app.use app.router
 app.use express.favicon("#{process.cwd()}/#{config.PUBLIC_PATH}/#{config.IMAGES_PATH}/favicon.ico")
 app.use express["static"] path.join process.cwd(), config.PUBLIC_PATH
 
+# for formage
+app.use(express.methodOverride())
+app.use(express.cookieParser('magical secret admin'))
+app.use(express.cookieSession({cookie: { maxAge: 1000 * 60 * 60 *  24 }}))
+
 # mongoose
 #mongoose = require 'mongoose'
 #app.set 'storage-uri',
@@ -65,7 +70,7 @@ app.get "/users/:id", users.get
 
 # Scene
 scenes = require '../models/scene'
-app.post    '/scenes',     scenes.create
+#app.post    '/scenes',     scenes.create
 #app.get     '/scenes',     scenes.retrieve
 #app.get     '/scenes/:id', scenes.retrieve
 #app.put     '/scenes/:id', scenes.update
@@ -109,8 +114,15 @@ require "angoose"
 #    console.log json
 #)
 
+admin = require('formage').init(app, express, {Scene: scenes},
+    title: 'Admin',
+    root: '/admin',
+    username: 'admin'
+    password: 'narak'
+    admin_users_gui: true
+)
+
 ###
   Export server
 ###
-
 module.exports = server

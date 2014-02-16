@@ -19,18 +19,23 @@ Scene = new mongoose.Schema(
         default: false
 )
 
-mongoose.model 'Scene', Scene
+scene = module.exports = mongoose.model 'Scene', Scene
+
+scene.formage =
+    list: ['name', 'created_at', 'public', 'sourceUrl']
+    search: ['name', 'desc', 'sourceUrl']
+    order_by: ['-created_at']
 
 # controller/scenes.coffee?
 
-exports.create = (req, res) ->
-    Resource = mongoose.model('Scene')
-    fields = req.body
-
-    r = new Resource(fields)
-    r.save (err, resource) ->
-        res.send(500, { error: err }) if err?
-        res.send(resource)
+#exports.create = (req, res) ->
+#    Resource = mongoose.model('Scene')
+#    fields = req.body
+#
+#    r = new Resource(fields)
+#    r.save (err, resource) ->
+#        res.send(500, { error: err }) if err?
+#        res.send(resource)
 #
 #
 #exports.retrieve = (req, res) ->
