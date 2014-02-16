@@ -23,14 +23,14 @@ app.set "ipaddr", config.HOSTNAME
 app.set "port", process.env.PORT or config.PORT
 app.set "views", path.join process.cwd(), config.VIEWS_PATH
 app.set "view engine", config.VIEWS_ENGINE
+app.use express.compress()
 app.use express.bodyParser()
 app.use express.methodOverride()
 app.use app.router
 app.use express.favicon("#{process.cwd()}/#{config.PUBLIC_PATH}/#{config.IMAGES_PATH}/favicon.ico")
-app.use express["static"] path.join process.cwd(), config.PUBLIC_PATH
+app.use express.static path.join(process.cwd(), config.PUBLIC_PATH)
 
 # for formage
-app.use(express.methodOverride())
 app.use(express.cookieParser('magical secret admin'))
 app.use(express.cookieSession({cookie: { maxAge: 1000 * 60 * 60 *  24 }}))
 
