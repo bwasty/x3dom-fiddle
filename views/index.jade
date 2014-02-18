@@ -3,7 +3,12 @@ extends layout
 block content
     div.hero-unit
 
-        h1 Welcome to Angular Espresso
+        h1
+            | Welcome to Angular Espresso,
+            = ' ' + user.displayName
+
+        div: a(href="/auth/google") Sign In with
+            img(src='/images/google/Red-signin_Google_base_20dp.png')
 
         div(ng-controller='AppCtrl')
             pre(style='white-space: pre-wrap;', ng-repeat='scene in scenes')

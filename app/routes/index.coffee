@@ -2,7 +2,7 @@
   GET home page
 ###
 exports.index = (request, response) ->
-    response.render "index", dev: request.app.get('dev')
+    response.render "index", dev: request.app.get('dev'), user: request.user ? {displayName: 'John Doe'}
 
 
 exports.x3d = (request, response) ->

@@ -7,6 +7,8 @@ express = require "express"
 path = require "path"
 routes = require "./routes"
 sass = require "node-sass"
+passport = require 'passport'
+GoogleStrategy = require('passport-google').Strategy
 
 app = express()
 
@@ -26,6 +28,8 @@ app.set "view engine", config.VIEWS_ENGINE
 app.use express.compress()
 app.use express.bodyParser()
 app.use express.methodOverride()
+app.use passport.initialize()
+app.use passport.session()
 app.use app.router
 app.use express.favicon("#{process.cwd()}/#{config.PUBLIC_PATH}/#{config.IMAGES_PATH}/favicon.ico")
 
@@ -34,10 +38,99 @@ app.use express.static path.join(process.cwd(), config.PUBLIC_PATH)
 if process.env.NODE_ENV != 'production'
     app.use express.static path.join(process.cwd(), 'app')
     app.set 'dev', true
+    returnURL = "http://localhost:8080/auth/google/return"
+    realm: "http://localhost:8080/"
+else
+    returnURL = "http://x3dom.malkut.de/auth/google/return"
+    realm = "http://x3dom.malkut.de/"
 
 # for formage
 app.use(express.cookieParser('magical secret admin'))
-app.use(express.cookieSession({cookie: { maxAge: 1000 * 60 * 60 *  24 }}))
+app.use(express.cookieSession({cookie: { maxAge: 7 * 60 * 60 * 24 }}))
+
+###
+google auth
+###
+
+# Passport session setup.
+#   To support persistent login sessions, Passport needs to be able to
+#   serialize users into and deserialize users out of the session.  Typically,
+#   this will be as simple as storing the user ID when serializing, and finding
+#   the user by ID when deserializing.  However, since this example does not
+#   have a database of user records, the complete Google profile is serialized
+#   and deserialized.
+passport.serializeUser (user, done) ->
+    done null, user
+    return
+
+passport.deserializeUser (obj, done) ->
+    done null, obj
+    return
+
+# Use the GoogleStrategy within Passport.
+#   Strategies in passport require a `validate` function, which accept
+#   credentials (in this case, an OpenID identifier and profile), and invoke a
+#   callback with a user object.
+passport.use new GoogleStrategy(
+    # TODO!: local/prod switch...
+    returnURL: returnURL
+    realm: realm
+, (identifier, profile, done) ->
+    console.log identifier
+    console.log profile
+
+    # asynchronous verification, for effect...
+#    process.nextTick ->
+
+    # To keep the example simple, the user's Google profile is returned to
+    # represent the logged-in user.  In a typical application, you would want
+    # to associate the Google account with a user record in your database,
+    # and return that user instead.
+    profile.identifier = identifier
+    done null, profile
+)
+
+# Simple route middleware to ensure user is authenticated.
+#   Use this route middleware on any resource that needs to be protected.  If
+#   the request is authenticated (typically via a persistent login session),
+#   the request will proceed.  Otherwise, the user will be redirected to the
+#   login page.
+ensureAuthenticated = (req, res, next) ->
+    return next()  if req.isAuthenticated()
+    res.redirect "/login"
+
+app.get "/account", ensureAuthenticated, (req, res) ->
+    res.render "account",
+        user: req.user
+
+app.get "/login", (req, res) ->
+    res.render "login",
+        user: req.user
+
+# GET /auth/google
+#   Use passport.authenticate() as route middleware to authenticate the
+#   request.  The first step in Google authentication will involve redirecting
+#   the user to google.com.  After authenticating, Google will redirect the
+#   user back to this application at /auth/google/return
+app.get "/auth/google", passport.authenticate("google", {failureRedirect: "/login"}), (req, res) ->
+    res.redirect "/"
+
+# GET /auth/google/return
+#   Use passport.authenticate() as route middleware to authenticate the
+#   request.  If authentication fails, the user will be redirected back to the
+#   login page.  Otherwise, the primary route function function will be called,
+#   which, in this example, will redirect the user to the home page.
+app.get "/auth/google/return", passport.authenticate("google",
+    failureRedirect: "/login"
+), (req, res) ->
+#    res.redirect "/"
+    res.render "index", dev: req.app.get('dev'), user: req.user
+
+app.get "/logout", (req, res) ->
+    req.logout()
+    res.redirect "/"
+
+
 
 # mongoose
 #mongoose = require 'mongoose'
