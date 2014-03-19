@@ -25,7 +25,8 @@
     "grunt-contrib-uglify": "~0.3.2",
     "grunt-contrib-concat": "~0.3.0",
     "passport-google": "~0.3.0",
-    "angular-bridge": "~0.3.6"
+    "angular-bridge": "~0.3.6",
+    "lodash": "~2.4.1"
   },
   "engines": {
     "node": ">=0.8"
