@@ -2,9 +2,10 @@ module.exports = (grunt) ->
     grunt.initConfig
         pkg: grunt.file.readJSON("package.json")
         coffee:
-            compile:
-                options:
-                    bare: true
+            options:
+                bare: true
+                sourceMap: true
+            compileClient:
                 files:
                     'app/angular/angular-app.js': [
                         'app/angular/app.coffee'
@@ -13,6 +14,10 @@ module.exports = (grunt) ->
                         'app/angular/filters.coffee'
                         'app/angular/services.coffee'
                     ]
+            compileClientDev:
+                expand: true
+                src: ['app/angular/*.coffee']
+                ext: '.js'
 
         uglify:
             options:
@@ -43,10 +48,18 @@ module.exports = (grunt) ->
             dev:
                 script: 'app.coffee'
 
+        watch:
+            coffee:
+                files: ['app/angular/*.coffee']
+                # TODO!: why doesn't newer work correctly here?
+                tasks: 'coffee:compileClientDev'
+
     grunt.loadNpmTasks 'grunt-contrib-uglify'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-concat'
     grunt.loadNpmTasks 'grunt-nodemon'
+    grunt.loadNpmTasks 'grunt-contrib-watch'
+#    grunt.loadNpmTasks 'grunt-newer'
 
     grunt.registerTask 'default', ['coffee', 'uglify', 'concat']
     grunt.registerTask 'heroku', ['coffee', 'uglify', 'concat']
