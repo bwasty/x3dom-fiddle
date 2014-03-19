@@ -39,10 +39,14 @@ module.exports = (grunt) ->
                 ]
                 dest: 'public/lib/all-deps.js'
 
+        nodemon:
+            dev:
+                script: 'app.coffee'
 
     grunt.loadNpmTasks 'grunt-contrib-uglify'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
-    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks 'grunt-contrib-concat'
+    grunt.loadNpmTasks 'grunt-nodemon'
 
     grunt.registerTask 'default', ['coffee', 'uglify', 'concat']
     grunt.registerTask 'heroku', ['coffee', 'uglify', 'concat']
