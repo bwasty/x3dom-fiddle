@@ -191,13 +191,6 @@ server = app.listen app.get('port'), ->
 io = require("socket.io").listen server
 require("./socket").configure io
 
-# Angoose bootstraping
-require "angoose"
-    .init(app,
-        'module-dirs': 'app/models',
-        'mongo-opts': process.env.MONGOLAB_URI or 'mongodb://localhost/scenes'
-    )
-
 # TODO!: integrate in a useful place (working)
 #sendgrid = require('sendgrid')(
 #    process.env.SENDGRID_USERNAME,

@@ -4,9 +4,10 @@
   Controllers
 ###
 
-AppCtrl = ["$scope", "Scene", ($scope, Scene) ->
-    $scope.scenes = Scene.$query()
-]
+# TODO!: create SceneProvider (or restangular only?)
+AppCtrl = ["$scope", ($scope) ->
+    $scope.scenes = null #Scene.$query()
+] 
 
 X3domCtrl = ($scope) ->
     $scope.foo = 42
