@@ -133,14 +133,14 @@ app.get "/logout", (req, res) ->
 
 
 # mongoose
-#mongoose = require 'mongoose'
-#app.set 'storage-uri',
-#    process.env.MONGOLAB_URI or
-#    'mongodb://localhost/scenes'
-#
-#mongoose.connect app.get('storage-uri'), { db: { safe: true }}, (err) ->
-#    console.log "Mongoose - connection error: " + err if err?
-#    console.log "Mongoose - connection OK"
+mongoose = require 'mongoose'
+app.set 'storage-uri',
+    process.env.MONGOLAB_URI or
+    'mongodb://localhost/scenes'
+
+mongoose.connect app.get('storage-uri'), { db: { safe: true }}, (err) ->
+    console.log "Mongoose - connection error: " + err if err?
+    console.log "Mongoose - connection OK"
 
 
 # TODO!: test/use
@@ -150,6 +150,19 @@ app.get "/logout", (req, res) ->
 #conn = mongoose.createConnection app.get('storage-uri')
 #conn.once 'open', ->
 #    gfs = Grid(conn.db, mongoose.mongo)
+
+# angular-bridge
+Scene = require './models/scene'
+
+angularBridge = new (require('angular-bridge'))(app, {
+    urlPrefix : '/api/'
+})
+
+# With express you can password protect a url prefix :
+#app.use('/api', express.basicAuth('admin', 'my_password'));
+
+# Expose the pizzas collection via REST
+angularBridge.addResource('scenes', Scene);
 
 
 ###
@@ -167,7 +180,7 @@ app.get "/users", users.list
 app.get "/users/:id", users.get
 
 # Scene
-scenes = require './models/scene'
+#scenes = require './models/scene'
 #app.post    '/scenes',     scenes.create
 #app.get     '/scenes',     scenes.retrieve
 #app.get     '/scenes/:id', scenes.retrieve
@@ -206,7 +219,7 @@ require("./socket").configure io
 #    console.log json
 #)
 
-admin = require('formage').init(app, express, {Scene: scenes},
+admin = require('formage').init(app, express, {Scene: Scene},
     title: 'Admin',
     root: '/admin',
     username: 'admin'
