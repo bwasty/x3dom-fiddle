@@ -5,8 +5,8 @@
 ###
 
 # TODO!: create SceneProvider (or restangular only?)
-AppCtrl = ["$scope", ($scope) ->
-    $scope.scenes = null #Scene.$query()
+AppCtrl = ["$scope", "Restangular", ($scope, Restangular) ->
+    $scope.scenes = Restangular.all('api/scenes').getList().$object
 ] 
 
 X3domCtrl = ($scope) ->

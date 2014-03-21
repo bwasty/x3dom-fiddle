@@ -4,10 +4,10 @@ module.exports = (grunt) ->
         coffee:
             options:
                 bare: true
-                sourceMap: true
+#                sourceMap: true
             compileClient:
                 files:
-                    'app/angular/angular-app.js': [
+                    'public/angular-app.js': [
                         'app/angular/app.coffee'
                         'app/angular/controllers.coffee'
                         'app/angular/directives.coffee'
@@ -25,7 +25,7 @@ module.exports = (grunt) ->
 
             dist:
                 files:
-                    'public/angular-app.min.js': 'app/angular/angular-app.js'
+                    'public/angular-app.min.js': 'public/angular-app.js'
                     # minifying x3dom saves ~150kb raw, but only 11 gzipped
 #                    'public/lib/x3dom-1.5.1/x3dom.min.js': 'public/lib/x3dom-1.5.1/x3dom.js'
 #                    'public/lib/x3dom-1.5.1/x3dom-full.min.js': 'public/lib/x3dom-1.5.1/x3dom-full.js'
@@ -36,9 +36,11 @@ module.exports = (grunt) ->
             dist:
                 src: [
                     'public/lib/socket.io-client/dist/socket.io.min.js'
+                    'public/lib/lodash/dist/lodash.min.js'
                     'public/lib/angular/angular.min.js'
                     'public/lib/angular-route/angular-route.min.js'
                     'public/lib/angular-resource/angular-resource.min.js'
+                    'public/lib/restangular/dist/restangular.js'
                     'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js'
                     'public/lib/x3dom-1.5.1/x3dom.js'
                 ]

@@ -139,8 +139,10 @@ app.set 'storage-uri',
     'mongodb://localhost/scenes'
 
 mongoose.connect app.get('storage-uri'), { db: { safe: true }}, (err) ->
-    console.log "Mongoose - connection error: " + err if err?
-    console.log "Mongoose - connection OK"
+    if err?
+        console.log "Mongoose - connection error: " + err
+    else
+        console.log "Mongoose - connection OK"
 
 
 # TODO!: test/use

@@ -25,9 +25,11 @@ block content
 
     if dev
         script(src='/lib/socket.io-client/dist/socket.io.js')
+        script(src='/lib/lodash/dist/lodash.min.js')
         script(src='/lib/angular/angular.js')
         script(src='/lib/angular-route/angular-route.js')
         script(src='/lib/angular-resource/angular-resource.js')
+        script(src='/lib/restangular/dist/restangular.js')
         script(src='/lib/angular-bootstrap/ui-bootstrap-tpls.js')
         script(src='/lib/x3dom-1.5.1/x3dom.debug.js')
 
@@ -37,14 +39,6 @@ block content
         script(src='/angular/filters.js')
         script(src='/angular/directives.js')
     else
-        //script(src='/lib/socket.io-client/dist/socket.io.min.js')
-        //script(src='/lib/angular/angular.min.js')
-        //script(src='/lib/angular-route/angular-route.min.js')
-        //script(src='/lib/angular-resource/angular-resource.min.js')
-        //script(src='/lib/angular-bootstrap/ui-bootstrap-tpls.min.js')
-        //script(src='/lib/x3dom-1.5.1/x3dom.js')
         script(src='/lib/all-deps.js')
-
-        script(src='/angoose/angoose-client.js')
 
         script(src='angular-app.min.js')
