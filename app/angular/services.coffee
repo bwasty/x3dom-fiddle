@@ -1,9 +1,5 @@
 "use strict"
 
-###
-  Services
-###
-
 socketServer = document.domain
 
 angular.module("X3domApp.services", [])
@@ -22,11 +18,3 @@ angular.module("X3domApp.services", [])
 
     socketService
 ])
-#.factory "User", ["$resource", ($resource) ->
-#    url = "/users/:userId"
-#
-#    $resource url, {}, {
-#        list: {method: "GET", params: {userId: ""}},
-#        get: {method: "GET", params: {}}
-#    }
-#]

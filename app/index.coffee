@@ -131,7 +131,6 @@ app.get "/logout", (req, res) ->
     res.redirect "/"
 
 
-
 # mongoose
 mongoose = require 'mongoose'
 app.set 'storage-uri',
@@ -163,7 +162,7 @@ angularBridge = new (require('angular-bridge'))(app, {
 # With express you can password protect a url prefix :
 #app.use('/api', express.basicAuth('admin', 'my_password'));
 
-# Expose the pizzas collection via REST
+# Expose the collection via REST
 angularBridge.addResource('scenes', Scene);
 
 
@@ -176,25 +175,9 @@ app.get "/", routes.index
 app.get "/x3d", routes.x3d
 app.get "/partials/:name", routes.partials
 
-# Services
-users = require "./services/users"
-app.get "/users", users.list
-app.get "/users/:id", users.get
-
-# Scene
-#scenes = require './models/scene'
-#app.post    '/scenes',     scenes.create
-#app.get     '/scenes',     scenes.retrieve
-#app.get     '/scenes/:id', scenes.retrieve
-#app.put     '/scenes/:id', scenes.update
-#app.delete  '/scenes/:id', scenes.delete
-
 ###
   Server startup
 ###
-
-#serverStarted = ->
-#    console.log "Server listening on http://#{app.get "ipaddr"}:#{app.get "port"}"
 
 server = app.listen app.get('port'), ->
     console.log("Listening on " + app.get('port'));

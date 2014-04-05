@@ -1,9 +1,5 @@
 "use strict"
 
-###
-    Declare app level module which depends on filters, services, and directives
-###
-
 angular.module("X3domApp", ["ngRoute", "X3domApp.services", "restangular"])
 .config ["$routeProvider", ($routeProvider) ->
     $routeProvider
