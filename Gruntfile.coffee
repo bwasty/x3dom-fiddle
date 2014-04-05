@@ -8,15 +8,15 @@ module.exports = (grunt) ->
             compileClient:
                 files:
                     'public/angular-app.js': [
-                        'app/angular/app.coffee'
-                        'app/angular/controllers.coffee'
-                        'app/angular/directives.coffee'
-                        'app/angular/filters.coffee'
-                        'app/angular/services.coffee'
+                        'client/angular/app.coffee'
+                        'client/angular/controllers.coffee'
+                        'client/angular/directives.coffee'
+                        'client/angular/filters.coffee'
+                        'client/angular/services.coffee'
                     ]
             compileClientDev:
                 expand: true
-                src: ['app/angular/*.coffee']
+                src: ['client/angular/*.coffee']
                 ext: '.js'
 
         uglify:
@@ -52,7 +52,7 @@ module.exports = (grunt) ->
 
         watch:
             coffee:
-                files: ['app/angular/*.coffee']
+                files: ['client/angular/*.coffee']
                 # TODO!: why doesn't newer work correctly here?
                 tasks: 'coffee:compileClientDev'
 

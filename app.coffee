@@ -1,2 +1,2 @@
 require 'newrelic'
-require "./app/index"
+require "./server/index"

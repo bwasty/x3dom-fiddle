@@ -36,7 +36,7 @@ app.use express.favicon("#{process.cwd()}/#{config.PUBLIC_PATH}/#{config.IMAGES_
 app.use express.static path.join(process.cwd(), config.PUBLIC_PATH)
 
 if process.env.NODE_ENV != 'production'
-    app.use express.static path.join(process.cwd(), 'app')
+    app.use express.static path.join(process.cwd(), 'client')
     app.set 'dev', true
     returnURL = "http://localhost:8080/auth/google/return"
     realm: "http://localhost:8080/"
