@@ -124,6 +124,7 @@ app.get "/auth/google/return", passport.authenticate("google",
     failureRedirect: "/login"
 ), (req, res) ->
 #    res.redirect "/"
+    console.log(req.user)
     res.render "index", dev: req.app.get('dev'), user: req.user
 
 app.get "/logout", (req, res) ->
@@ -204,7 +205,7 @@ require("./socket").configure io
 #    console.log json
 #)
 
-admin = require('formage').init(app, express, {Scene: models.Scene},
+admin = require('formage').init(app, express, models,
     title: 'Admin',
     root: '/admin',
     username: 'admin'

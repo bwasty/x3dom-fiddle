@@ -1,5 +1,9 @@
 mongoose = require 'mongoose'
 
+###
+    Scene
+###
+
 SceneSchema = new mongoose.Schema(
     name: String
     desc: String
@@ -26,3 +30,24 @@ Scene.formage =
     order_by: ['-created_at']
 
 module.exports.Scene = Scene
+
+
+###
+    User
+###
+
+UserSchema = new mongoose.Schema(
+    identifier: String  # e.g. https://www.google.com/accounts/o8/id?id=AIt...Oawk
+    name: String  # nickname? or warn about public?
+    email: String
+    created_at:
+        type: Date
+        default: Date.now
+    last_login: Date
+)
+
+User = mongoose.model 'User', UserSchema
+User.formage =
+    list: ['email', 'created_at', 'last_login']
+
+module.exports.User = User
