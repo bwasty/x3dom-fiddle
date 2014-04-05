@@ -1,6 +1,6 @@
 mongoose = require 'mongoose'
 
-Scene = new mongoose.Schema(
+SceneSchema = new mongoose.Schema(
     name: String
     desc: String
     x3d: String
@@ -19,9 +19,10 @@ Scene = new mongoose.Schema(
         default: false
 )
 
-scene = module.exports = mongoose.model 'Scene', Scene
-
-scene.formage =
+Scene = mongoose.model 'Scene', SceneSchema
+Scene.formage =
     list: ['name', 'created_at', 'public', 'sourceUrl']
     search: ['name', 'desc', 'sourceUrl']
     order_by: ['-created_at']
+
+module.exports.Scene = Scene

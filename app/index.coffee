@@ -153,7 +153,7 @@ mongoose.connect app.get('storage-uri'), { db: { safe: true }}, (err) ->
 #    gfs = Grid(conn.db, mongoose.mongo)
 
 # angular-bridge
-Scene = require './models/scene'
+models = require './models'
 
 angularBridge = new (require('angular-bridge'))(app, {
     urlPrefix : '/api/'
@@ -163,7 +163,7 @@ angularBridge = new (require('angular-bridge'))(app, {
 #app.use('/api', express.basicAuth('admin', 'my_password'));
 
 # Expose the collection via REST
-angularBridge.addResource('scenes', Scene);
+angularBridge.addResource('scenes', models.Scene);
 
 
 ###
@@ -204,7 +204,7 @@ require("./socket").configure io
 #    console.log json
 #)
 
-admin = require('formage').init(app, express, {Scene: Scene},
+admin = require('formage').init(app, express, {Scene: models.Scene},
     title: 'Admin',
     root: '/admin',
     username: 'admin'
