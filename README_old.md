@@ -1,4 +1,4 @@
-# Malkut-3d Prototype
+# X3dom-Fiddle Prototype
 * based ony MEAN-CS template [MongoDB, ExpressJS, AngularJS, NodeJS - CoffeeScript, SASS]
 
 Start an app with AngularJS on the client, Express + Node + Socket.IO as your back-end, all written in CoffeeScript.
